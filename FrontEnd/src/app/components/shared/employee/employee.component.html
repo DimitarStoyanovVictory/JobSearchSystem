@@ -1,0 +1,59 @@
+<app-header></app-header>
+<div class="outer">
+    <div class="middle">
+        <main>
+            <div class="wrapper">
+                <form [formGroup]="employeeForm" (ngSubmit)="employeeSubmit()" autocomplete="off">
+                    <div class="form-group form-row">
+                        <h4 class="mt-1">Телефон за връзка:</h4>
+                        <input type="number" id="phoneText" class="form-control col-sm-4 mb-2" [ngClass]="{'is-invalid' : phone.invalid && (phone.touched || phone.dirty)}" 
+                            formControlName="phone" autocomplete="off" placeholder="Напишете вашият телефон" required />
+                        <span class="textDanger text-danger" *ngIf="phone.invalid && (phone.touched || phone.dirty)">Моля въведете вашият телефонен номер!</span>
+                        <span class="textDanger text-danger" *ngIf="minLengthError">Моля номерът да е над 7 цифри!</span>
+                        <span class="textDanger text-danger" *ngIf="maxLengthError">Моля номерът да е до 20 цифри!</span>
+                    </div>
+                    <div class="form-group form-row">
+                        <h4 class="mt-1">Трите имена:</h4>
+                        <input type="text" id="employeeText" class="form-control col-sm-4 mb-2" formControlName="employeeName" autocomplete="off" placeholder="Напишете трите си имена" />
+                        <span class="textDanger text-danger" *ngIf="maxEmployeeNameLength">Моля името ви да е до 30 символа!</span>
+                    </div>
+                    <div class="form-group form-row">
+                        <h4 class="mt-1">Емейл:</h4>
+                        <input type="email" id="emailText" class="form-control col-sm-4 mb-2" formControlName="email" autocomplete="off" placeholder="Напишете вашият емайл" />
+                        <span class="textDanger text-danger" *ngIf="maxEmailLength">Моля името на емайла да е до 30 символа!</span>
+                    </div>
+                    <div class="form-group form-row">
+                        <h4 class="mt-1">Градове в които търсите работници:</h4>
+                        <input type="text" id="cityText" class="form-control col-sm-4 mb-2" formControlName="currentCity" autocomplete="off" placeholder="Добавете града или село" 
+                            (click)="toggleDropDownCities();" />
+                        <input type="button" value="Добави град/село" formtarget="_blank" id="addCity" class="btn btn-primary" 
+                            (click)="addCity(employeeForm.value.currentCity);" placement="top" [disabled]="isAddCityButtonActive()"
+                            ngbTooltip="За да добавите населено място вън от списъка моля въведете името на мястото и натиснете този бутон, може да въведете 7 града максимум!" />
+                        <div id="dropdownSearchCityCompany" *ngIf="showDropDownCities" clickOutside (clickOutside)="toggleDropDownCities();">
+                            <div class="p-2 city" *ngFor="let city of citiesFiltered">
+                                <span class="text-white" (click)="selectCity(city);">{{city}}</span>
+                            </div>
+                        </div>
+
+                        <span class="textDanger text-danger" *ngIf="maxCityLength">Моля името на град/село да е до 30 символа!</span>
+                        <div class="text-secondary"> 
+                            <label class="mt-3">Търсене в населени места:</label>
+                            <span data-toggle="tooltip" title="Изтри от списъка" *ngFor="let city of citiesSearch; let isFirst = first" (click)="removeCity(city);">
+                                <span class="addedCity">{{isFirst ? ' ' : ', '}}{{city}}</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div id="queryButton" class="mt-5 w-25" placement="top" ngbTooltip="За да можете да подадете заявка моля попълнете полето с телефонен номер за обратна връзка към вас!">
+                        <input type="submit" value="Изпрати заявка" class="btn btn-success w-100" [disabled]="isSubmitButtonActive()" />
+                    </div>
+
+                    <div class="mt-5 messageSize">
+                        <span>Здравейте за да използвате нашите HR услуги моля попълнете полето <strong>Телефон за връзка</strong> и изпратете заявка или директно се свърежете с нас на <strong>Телефон за връзка с нас</strong> показан по долу!</span>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+</div>
+<app-footer></app-footer>

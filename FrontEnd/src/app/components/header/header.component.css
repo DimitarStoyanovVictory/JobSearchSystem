@@ -1,0 +1,16 @@
+ul li {
+    display: inline;
+}
+
+li a:hover {
+    background-color: darkcyan;
+    opacity: 0.5;
+}
+
+a {
+    font-size: 30px;
+}
+
+#headerBar {
+    height: 80px;
+}

@@ -1,0 +1,42 @@
+h4 {
+    display: inline;
+}
+
+#phoneText {
+    margin-left: 180px;
+}
+
+.textDanger {
+    margin-left: 370px;
+}
+
+#employeeText {
+    margin-left: 240px;
+}
+
+#emailText {
+    margin-left: 302px;
+}
+
+#cityText {
+    margin-left: 6px;
+}
+
+#addCity {
+    margin-left: 5px;
+}
+
+#queryButton {
+    margin-left: 39%;
+}
+
+#dropdownSearchCityCompany {
+    position: absolute;
+    margin-top: 30px;
+    width:272px;
+    z-index: 1;
+	max-height: 210px;
+    left: 44.9%;
+    overflow-y: auto;
+    background-color: #292A2D;
+}
