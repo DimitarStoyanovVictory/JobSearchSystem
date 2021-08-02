@@ -1,0 +1,48 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+html, body {
+	height: 90%;
+	width: 100%;
+	min-height: 700px;
+	margin: 0;
+	padding: 0;
+    font: 14px sans-serif;
+}
+
+.outer {
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+
+.middle {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.wrapper {
+	position: relative;
+    width: 800px;
+	margin:auto;
+}
+
+.city {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.city:hover {
+	background-color: #4B4C4F;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.addedCity:hover {
+	cursor: pointer;
+	color: blue;
+	text-decoration: underline;
+}
+
+.messageSize {
+	font-size: 17px;
+}
